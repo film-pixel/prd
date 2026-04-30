@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRD Mastery Guide</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Source+Sans+3:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    .font-heading { font-family: 'Playfair Display', serif; }
+    .font-body { font-family: 'Source Sans 3', sans-serif; }
+    .section-card { transition: all 0.3s ease; }
+    .section-card:hover { transform: translateY(-2px); }
+    .tab-active { border-bottom: 3px solid #1a1a2e; }
+    .fade-in { animation: fadeIn 0.4s ease forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .checklist-item input:checked + span { text-decoration: line-through; opacity: 0.6; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div id="app" class="h-full w-full overflow-auto" style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);"><!-- Hero -->
+   <header class="px-6 py-12 md:py-20 text-center max-w-4xl mx-auto">
+    <div class="fade-in" style="animation-delay:0.1s"><span class="inline-block px-4 py-1 rounded-full text-xs font-semibold tracking-widest uppercase" style="background:#e94560; color:#fff;">Professional Guide</span>
+    </div>
+    <h1 id="main-title" class="font-heading text-4xl md:text-6xl mt-6 mb-4" style="color:#eaeaea;">PRD Mastery Guide</h1>
+    <p id="subtitle" class="text-lg md:text-xl opacity-80" style="color:#a8a8b3;">Panduan lengkap menulis Product Requirements Document yang efektif untuk pengembangan aplikasi</p>
+   </header><!-- Navigation Tabs -->
+   <nav class="sticky top-0 z-10 px-4" style="background:rgba(15,15,35,0.95); backdrop-filter:blur(8px);">
+    <div class="max-w-4xl mx-auto flex overflow-x-auto gap-1 py-2" id="tabs"><button onclick="showSection('overview')" class="tab-btn tab-active px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#eaeaea;">Overview</button> <button onclick="showSection('struktur')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">Struktur PRD</button> <button onclick="showSection('example')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">Contoh Real</button> <button onclick="showSection('template')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">Template</button> <button onclick="showSection('tips')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">Tips &amp; Tricks</button> <button onclick="showSection('workshop')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">📚 Workshop</button> <button onclick="showSection('exercise')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">💪 Latihan</button> <button onclick="showSection('checklist')" class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap rounded-t" style="color:#a8a8b3;">Checklist</button>
+    </div>
+   </nav><!-- Content Sections -->
+   <main class="max-w-4xl mx-auto px-4 pb-16 pt-8"><!-- Overview -->
+    <section id="sec-overview" class="fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h2 class="font-heading text-2xl mb-4" style="color:#eaeaea;">Apa itu PRD?</h2>
+      <p class="leading-relaxed" style="color:#a8a8b3;">Product Requirements Document (PRD) adalah dokumen yang mendefinisikan <strong style="color:#e94560;">tujuan, fitur, fungsionalitas, dan perilaku</strong> dari produk yang akan dibangun. PRD menjadi panduan utama bagi tim engineering, design, dan stakeholder.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-4">
+      <div class="section-card rounded-xl p-5" style="background:rgba(233,69,96,0.08); border:1px solid rgba(233,69,96,0.2);">
+       <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="target" style="color:#e94560; width:20px;"></i>
+        <h3 class="font-semibold" style="color:#eaeaea;">Kejelasan</h3>
+       </div>
+       <p class="text-sm" style="color:#a8a8b3;">Menghilangkan ambiguitas dalam pengembangan produk</p>
+      </div>
+      <div class="section-card rounded-xl p-5" style="background:rgba(79,172,254,0.08); border:1px solid rgba(79,172,254,0.2);">
+       <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="users" style="color:#4facfe; width:20px;"></i>
+        <h3 class="font-semibold" style="color:#eaeaea;">Alignment</h3>
+       </div>
+       <p class="text-sm" style="color:#a8a8b3;">Menyatukan visi seluruh tim dalam satu dokumen</p>
+      </div>
+      <div class="section-card rounded-xl p-5" style="background:rgba(67,233,123,0.08); border:1px solid rgba(67,233,123,0.2);">
+       <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="gauge" style="color:#43e97b; width:20px;"></i>
+        <h3 class="font-semibold" style="color:#eaeaea;">Efisiensi</h3>
+       </div>
+       <p class="text-sm" style="color:#a8a8b3;">Mengurangi revisi dan miskomunikasi selama development</p>
+      </div>
+     </div>
+     <div class="section-card rounded-2xl p-6" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h3 class="font-heading text-xl mb-3" style="color:#eaeaea;">Kapan PRD Dibutuhkan?</h3>
+      <ul class="space-y-2" style="color:#a8a8b3;">
+       <li class="flex gap-2"><i data-lucide="check-circle" style="color:#43e97b; width:18px; flex-shrink:0; margin-top:2px;"></i>Fitur baru yang kompleks</li>
+       <li class="flex gap-2"><i data-lucide="check-circle" style="color:#43e97b; width:18px; flex-shrink:0; margin-top:2px;"></i>Redesign atau refactor besar</li>
+       <li class="flex gap-2"><i data-lucide="check-circle" style="color:#43e97b; width:18px; flex-shrink:0; margin-top:2px;"></i>Produk baru dari nol</li>
+       <li class="flex gap-2"><i data-lucide="check-circle" style="color:#43e97b; width:18px; flex-shrink:0; margin-top:2px;"></i>Integrasi dengan sistem pihak ketiga</li>
+      </ul>
+     </div>
+    </section><!-- Struktur PRD -->
+    <section id="sec-struktur" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h2 class="font-heading text-2xl mb-6" style="color:#eaeaea;">Struktur PRD yang Baik</h2>
+      <div class="space-y-4" id="struktur-list">
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(233,69,96,0.06); border:1px solid rgba(233,69,96,0.15);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#e94560; color:#fff;">1</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">Executive Summary</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Ringkasan singkat (1-2 paragraf) tentang apa yang akan dibangun dan mengapa. Harus bisa dipahami oleh siapapun dalam 30 detik.</p>
+         <p class="mt-2"><strong style="color:#e94560;">Contoh:</strong> "Membangun fitur real-time collaboration pada editor dokumen untuk meningkatkan produktivitas tim sebesar 40%."</p>
+        </div>
+       </div>
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(79,172,254,0.06); border:1px solid rgba(79,172,254,0.15);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#4facfe; color:#fff;">2</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">Problem Statement</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Jelaskan masalah yang dialami pengguna dengan data pendukung. Gunakan format:</p>
+         <ul class="mt-2 space-y-1 list-disc pl-4">
+          <li>Siapa yang mengalami masalah?</li>
+          <li>Apa masalahnya secara spesifik?</li>
+          <li>Dampak bisnis dari masalah ini</li>
+          <li>Data/metrik yang mendukung</li>
+         </ul>
+        </div>
+       </div>
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(67,233,123,0.06); border:1px solid rgba(67,233,123,0.15);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#43e97b; color:#1a1a2e;">3</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">Goals &amp; Success Metrics</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Definisikan tujuan dengan kerangka SMART dan KPI yang terukur:</p>
+         <ul class="mt-2 space-y-1 list-disc pl-4">
+          <li><strong>Primary metric:</strong> Metrik utama keberhasilan</li>
+          <li><strong>Secondary metrics:</strong> Metrik pendukung</li>
+          <li><strong>Guardrail metrics:</strong> Batas yang tidak boleh dilanggar</li>
+         </ul>
+        </div>
+       </div>
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(250,200,60,0.06); border:1px solid rgba(250,200,60,0.15);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#fac83c; color:#1a1a2e;">4</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">User Stories &amp; Requirements</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Tulis requirements dalam format user story:</p>
+         <p class="mt-2 italic" style="color:#fac83c;">"Sebagai [persona], saya ingin [aksi], sehingga [manfaat]."</p>
+         <p class="mt-2">Kelompokkan menjadi: Must-have (P0), Should-have (P1), Nice-to-have (P2)</p>
+        </div>
+       </div>
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(167,119,227,0.06); border:1px solid rgba(167,119,227,0.15);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#a777e3; color:#fff;">5</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">Scope &amp; Out-of-Scope</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Sama pentingnya mendefinisikan apa yang <strong>TIDAK</strong> termasuk. Ini mencegah scope creep.</p>
+         <ul class="mt-2 space-y-1 list-disc pl-4">
+          <li>In-scope: Fitur/fungsi yang akan dibangun pada fase ini</li>
+          <li>Out-of-scope: Yang sengaja ditunda atau tidak dibangun</li>
+          <li>Future considerations: Rencana iterasi berikutnya</li>
+         </ul>
+        </div>
+       </div>
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(255,154,108,0.06); border:1px solid rgba(255,154,108,0.15);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#ff9a6c; color:#1a1a2e;">6</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">Technical Considerations</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Informasi teknis yang membantu engineering tanpa over-prescribing solusi:</p>
+         <ul class="mt-2 space-y-1 list-disc pl-4">
+          <li>Constraints &amp; dependencies</li>
+          <li>Performance requirements</li>
+          <li>Security &amp; compliance needs</li>
+          <li>API contracts (jika ada)</li>
+          <li>Migration plan (jika diperlukan)</li>
+         </ul>
+        </div>
+       </div>
+       <div class="rounded-xl p-5 cursor-pointer struktur-item" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);" onclick="toggleDetail(this)">
+        <div class="flex justify-between items-center">
+         <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background:#eaeaea; color:#1a1a2e;">7</span>
+          <h3 class="font-semibold" style="color:#eaeaea;">Timeline &amp; Milestones</h3>
+         </div><i data-lucide="chevron-down" style="color:#a8a8b3; width:18px;"></i>
+        </div>
+        <div class="detail hidden mt-3 pl-11 text-sm" style="color:#a8a8b3;">
+         <p>Breakdown fase pengembangan dengan deliverable yang jelas:</p>
+         <ul class="mt-2 space-y-1 list-disc pl-4">
+          <li>Phase 1: Design &amp; Planning</li>
+          <li>Phase 2: Core Development</li>
+          <li>Phase 3: Testing &amp; QA</li>
+          <li>Phase 4: Soft Launch / Beta</li>
+          <li>Phase 5: Full Release</li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Real Example -->
+    <section id="sec-example" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <div class="mb-6">
+       <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold" style="background:rgba(79,172,254,0.2); color:#4facfe;">Contoh Nyata</span>
+       <h2 class="font-heading text-2xl mt-4 mb-2" style="color:#eaeaea;">Aplikasi Laporan Presensi Siswa</h2>
+       <p class="text-sm" style="color:#a8a8b3;">Contoh PRD sederhana untuk proyek yang bisa dikerjakan di SMK</p>
+      </div>
+      <div class="space-y-6">
+       <!-- Executive Summary -->
+       <div class="rounded-xl p-5" style="background:rgba(79,172,254,0.06); border-left:3px solid #4facfe;">
+        <h3 class="font-semibold mb-3" style="color:#4facfe;">1️⃣ Executive Summary</h3>
+        <p style="color:#a8a8b3;">Kami akan membuat aplikasi mobile untuk guru mencatat presensi siswa secara digital. Guru tidak perlu membawa buku daftar hadir fisik. Data presensi bisa dilihat langsung di aplikasi dan dilaporkan otomatis ke sistem sekolah.</p>
+       </div><!-- Problem Statement -->
+       <div class="rounded-xl p-5" style="background:rgba(233,69,96,0.06); border-left:3px solid #e94560;">
+        <h3 class="font-semibold mb-3" style="color:#e94560;">2️⃣ Problem Statement</h3>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#e94560;">Masalah saat ini:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>Guru mencatat presensi di buku fisik, memakan waktu 10 menit per kelas</li>
+          <li>Sering ada data hilang atau rusak</li>
+          <li>Laporan presensi diinput manual ke komputer (duplikasi kerja)</li>
+          <li>Orang tua sulit tahu kapan anak mereka tidak masuk sekolah</li>
+         </ul>
+         <p style="margin-top:1rem;"><strong style="color:#e94560;">Target pengguna:</strong> Guru, BK (Bimbingan Konseling), Admin TU</p>
+        </div>
+       </div><!-- Goals -->
+       <div class="rounded-xl p-5" style="background:rgba(67,233,123,0.06); border-left:3px solid #43e97b;">
+        <h3 class="font-semibold mb-3" style="color:#43e97b;">3️⃣ Goals &amp; Success Metrics</h3>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#43e97b;">Target yang ingin dicapai:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Hemat waktu:</strong> Presensi selesai dalam 2 menit (dari 10 menit)</li>
+          <li><strong>Akurasi:</strong> 100% data tercatat tanpa kehilangan</li>
+          <li><strong>Adoption:</strong> 80% guru menggunakan app dalam 1 bulan pertama</li>
+          <li><strong>Laporan:</strong> BK bisa lihat rekap presensi realtime (tidak perlu menunggu laporan manual)</li>
+         </ul>
+        </div>
+       </div><!-- User Stories -->
+       <div class="rounded-xl p-5" style="background:rgba(250,200,60,0.06); border-left:3px solid #fac83c;">
+        <h3 class="font-semibold mb-3" style="color:#fac83c;">4️⃣ User Stories (Fitur-Fitur Utama)</h3>
+        <div class="space-y-3 text-sm" style="color:#a8a8b3;">
+         <div style="background:rgba(255,255,255,0.02); padding:10px; border-radius:6px;">
+          <p><strong style="color:#fac83c;">MUST HAVE (Wajib ada):</strong></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+           <li>Guru bisa buka daftar kelas dan langsung lihat nama semua siswa</li>
+           <li>Guru bisa tap tombol "Hadir" atau "Sakit" untuk setiap siswa</li>
+           <li>Guru bisa input alasan jika siswa sakit atau izin</li>
+           <li>Data presensi tersimpan di server (bukan hilang saat restart app)</li>
+          </ul>
+         </div>
+         <div style="background:rgba(255,255,255,0.02); padding:10px; border-radius:6px;">
+          <p><strong style="color:#fac83c;">SHOULD HAVE (Sebaiknya ada):</strong></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+           <li>BK bisa lihat laporan rekap presensi per siswa atau per kelas</li>
+           <li>Admin bisa export laporan ke Excel atau PDF</li>
+           <li>Orang tua bisa terima notifikasi (SMS atau email) jika anak absen</li>
+          </ul>
+         </div>
+         <div style="background:rgba(255,255,255,0.02); padding:10px; border-radius:6px;">
+          <p><strong style="color:#fac83c;">NICE TO HAVE (Bonusnya jika punya waktu):</strong></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+           <li>Barcode scan untuk presensi (lebih cepat daripada tap satu-satu)</li>
+           <li>Statistik presensi per siswa (grafik bulanan)</li>
+          </ul>
+         </div>
+        </div>
+       </div><!-- Scope -->
+       <div class="rounded-xl p-5" style="background:rgba(167,119,227,0.06); border-left:3px solid #a777e3;">
+        <h3 class="font-semibold mb-3" style="color:#a777e3;">5️⃣ Scope (Apa yang dibangun &amp; tidak)</h3>
+        <div class="space-y-3 text-sm" style="color:#a8a8b3;">
+         <div>
+          <p><strong style="color:#a777e3;">✅ IN SCOPE (Akan dibangun):</strong></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+           <li>App mobile untuk teacher (iOS dan Android)</li>
+           <li>Dashboard sederhana untuk BK lihat laporan</li>
+           <li>Database untuk simpan data presensi</li>
+          </ul>
+         </div>
+         <div style="margin-top:1rem;">
+          <p><strong style="color:#a777e3;">❌ OUT OF SCOPE (Tidak dibangun sekarang):</strong></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+           <li>Notifikasi SMS/email ke orang tua (bisa untuk fase 2)</li>
+           <li>Barcode scan (bisa untuk fase 2)</li>
+           <li>Integrasi dengan sistem gaji guru</li>
+          </ul>
+         </div>
+        </div>
+       </div><!-- Technical -->
+       <div class="rounded-xl p-5" style="background:rgba(255,154,108,0.06); border-left:3px solid #ff9a6c;">
+        <h3 class="font-semibold mb-3" style="color:#ff9a6c;">6️⃣ Technical Considerations</h3>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#ff9a6c;">Tech Stack (teknologi yang akan dipakai):</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>Frontend: React Native atau Flutter (bisa jalan di iOS &amp; Android)</li>
+          <li>Backend: Node.js + Express atau Django</li>
+          <li>Database: MySQL atau PostgreSQL</li>
+          <li>Server: Hosting di cloud (AWS, Google Cloud, atau lokal)</li>
+         </ul>
+         <p style="margin-top:1rem;"><strong style="color:#ff9a6c;">Pertimbangan penting:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>Aplikasi harus bisa jalan offline (jika internet hilang, tetap bisa catat presensi)</li>
+          <li>Data akan sync otomatis saat internet kembali</li>
+          <li>Login dengan username/password guru</li>
+         </ul>
+        </div>
+       </div><!-- Timeline -->
+       <div class="rounded-xl p-5" style="background:rgba(79,172,254,0.06); border-left:3px solid #4facfe;">
+        <h3 class="font-semibold mb-3" style="color:#4facfe;">7️⃣ Timeline (Rencana Pengerjaan)</h3>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <div class="flex justify-between items-start gap-3">
+          <span style="min-width:80px;"><strong style="color:#4facfe;">Minggu 1-2:</strong></span> <span>Planning + Design (wireframe &amp; database schema)</span>
+         </div>
+         <div class="flex justify-between items-start gap-3">
+          <span style="min-width:80px;"><strong style="color:#4facfe;">Minggu 3-5:</strong></span> <span>Development (buat backend API &amp; app frontend)</span>
+         </div>
+         <div class="flex justify-between items-start gap-3">
+          <span style="min-width:80px;"><strong style="color:#4facfe;">Minggu 6:</strong></span> <span>Testing &amp; Bug fix</span>
+         </div>
+         <div class="flex justify-between items-start gap-3">
+          <span style="min-width:80px;"><strong style="color:#4facfe;">Minggu 7:</strong></span> <span>Deploy + Training guru</span>
+         </div>
+        </div>
+       </div><!-- Risks -->
+       <div class="rounded-xl p-5" style="background:rgba(233,69,96,0.06); border-left:3px solid #e94560;">
+        <h3 class="font-semibold mb-3" style="color:#e94560;">8️⃣ Risks (Potensi Masalah)</h3>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <div>
+          <p><strong style="color:#e94560;">❌ Masalah:</strong> Internet sekolah sering mati</p>
+          <p style="margin-top:0.5rem;"><strong style="color:#43e97b;">✅ Solusi:</strong> App bisa offline, sync saat internet kembali</p>
+         </div>
+         <div style="margin-top:1rem;">
+          <p><strong style="color:#e94560;">❌ Masalah:</strong> Guru tidak terbiasa pakai teknologi</p>
+          <p style="margin-top:0.5rem;"><strong style="color:#43e97b;">✅ Solusi:</strong> Buat UI super simple &amp; beri training</p>
+         </div>
+         <div style="margin-top:1rem;">
+          <p><strong style="color:#e94560;">❌ Masalah:</strong> Server down, data presensi hilang</p>
+          <p style="margin-top:0.5rem;"><strong style="color:#43e97b;">✅ Solusi:</strong> Setup backup database harian</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Template -->
+    <section id="sec-template" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <div class="flex justify-between items-center mb-6">
+       <h2 class="font-heading text-2xl" style="color:#eaeaea;">Template PRD</h2><button onclick="copyTemplate()" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium" style="background:#e94560; color:#fff;"> <i data-lucide="copy" style="width:14px;"></i> Copy </button>
+      </div>
+      <pre id="template-content" class="rounded-xl p-5 text-sm leading-relaxed overflow-x-auto whitespace-pre-wrap" style="background:rgba(0,0,0,0.3); color:#a8a8b3; border:1px solid rgba(255,255,255,0.06);"># [Nama Produk/Fitur] - PRD
+**Version:** 1.0
+**Author:** [Nama]
+**Date:** [Tanggal]
+**Status:** Draft | In Review | Approved
+
+---
+
+## 1. Executive Summary
+[1-2 paragraf ringkasan produk/fitur dan alasan pembangunannya]
+
+## 2. Problem Statement
+**Target User:** [Persona]
+**Pain Point:** [Masalah spesifik]
+**Impact:** [Dampak bisnis/user dengan data]
+**Current Solution:** [Bagaimana masalah ditangani sekarang]
+
+## 3. Goals &amp; Success Metrics
+| Metric Type | Metric | Target | Timeframe |
+|-------------|--------|--------|-----------|
+| Primary     |        |        |           |
+| Secondary   |        |        |           |
+| Guardrail   |        |        |           |
+
+## 4. User Stories
+### P0 - Must Have
+- Sebagai [persona], saya ingin [aksi], sehingga [manfaat]
+
+### P1 - Should Have
+- Sebagai [persona], saya ingin [aksi], sehingga [manfaat]
+
+### P2 - Nice to Have
+- Sebagai [persona], saya ingin [aksi], sehingga [manfaat]
+
+## 5. Scope
+### In Scope
+- [Feature/requirement 1]
+
+### Out of Scope
+- [Apa yang TIDAK dibangun]
+
+### Future Considerations
+- [Rencana iterasi selanjutnya]
+
+## 6. Technical Considerations
+**Architecture:** [High-level approach]
+**Dependencies:** [Sistem/API yang dibutuhkan]
+**Performance:** [SLA/target performa]
+**Security:** [Kebutuhan keamanan]
+
+## 7. Design
+[Link ke mockup/wireframe/prototype]
+
+## 8. Timeline
+| Phase | Deliverable | Duration | Owner |
+|-------|-------------|----------|-------|
+|       |             |          |       |
+
+## 9. Risks &amp; Mitigations
+| Risk | Probability | Impact | Mitigation |
+|------|-------------|--------|------------|
+|      |             |        |            |
+
+## 10. Open Questions
+- [ ] [Pertanyaan yang belum terjawab]
+
+---
+**Approval:**
+- [ ] Product Manager
+- [ ] Engineering Lead
+- [ ] Design Lead
+- [ ] Stakeholder</pre>
+     </div>
+     <div id="copy-toast" class="hidden fixed bottom-6 right-6 px-4 py-2 rounded-lg text-sm font-medium" style="background:#43e97b; color:#1a1a2e;">
+      ✓ Template copied!
+     </div>
+    </section><!-- Tips -->
+    <section id="sec-tips" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h2 class="font-heading text-2xl mb-6" style="color:#eaeaea;">Tips Menulis PRD yang Efektif</h2>
+      <div class="space-y-5">
+       <div class="flex gap-4 items-start"><span class="text-2xl">✅</span>
+        <div>
+         <h3 class="font-semibold mb-1" style="color:#eaeaea;">Tulis untuk audiensmu</h3>
+         <p class="text-sm" style="color:#a8a8b3;">Engineer butuh detail teknis, stakeholder butuh business impact. Sesuaikan bahasa dan kedalaman informasi.</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start"><span class="text-2xl">✅</span>
+        <div>
+         <h3 class="font-semibold mb-1" style="color:#eaeaea;">Fokus pada "What" dan "Why", bukan "How"</h3>
+         <p class="text-sm" style="color:#a8a8b3;">PRD mendefinisikan masalah dan requirements. Biarkan engineering menentukan solusi teknisnya.</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start"><span class="text-2xl">✅</span>
+        <div>
+         <h3 class="font-semibold mb-1" style="color:#eaeaea;">Gunakan data, bukan opini</h3>
+         <p class="text-sm" style="color:#a8a8b3;">"70% user abandon checkout di step 3" lebih kuat dari "checkout flow-nya buruk".</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start"><span class="text-2xl">✅</span>
+        <div>
+         <h3 class="font-semibold mb-1" style="color:#eaeaea;">Definisikan edge cases</h3>
+         <p class="text-sm" style="color:#a8a8b3;">Apa yang terjadi saat error? Saat data kosong? Saat concurrent users? Pikirkan skenario tidak ideal.</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start"><span class="text-2xl">✅</span>
+        <div>
+         <h3 class="font-semibold mb-1" style="color:#eaeaea;">Iterasi dan kolaborasi</h3>
+         <p class="text-sm" style="color:#a8a8b3;">PRD bukan dokumen final — review bersama tim, terima feedback, dan update secara berkala.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(233,69,96,0.06); border:1px solid rgba(233,69,96,0.15);">
+      <h2 class="font-heading text-xl mb-4" style="color:#eaeaea;">❌ Kesalahan Umum</h2>
+      <div class="space-y-3 text-sm" style="color:#a8a8b3;">
+       <p>• <strong style="color:#e94560;">Terlalu panjang</strong> — PRD 50 halaman tidak akan dibaca. Jaga agar concise.</p>
+       <p>• <strong style="color:#e94560;">Tidak ada prioritas</strong> — Tanpa P0/P1/P2, semuanya terlihat penting.</p>
+       <p>• <strong style="color:#e94560;">Solusi bukan masalah</strong> — "Buat dropdown" vs "User kesulitan memilih dari 100+ opsi".</p>
+       <p>• <strong style="color:#e94560;">Metrics tidak terukur</strong> — "Improve UX" tidak bisa diukur. Gunakan angka spesifik.</p>
+       <p>• <strong style="color:#e94560;">Tidak ada out-of-scope</strong> — Tanpa batasan jelas, scope akan terus membesar.</p>
+      </div>
+     </div>
+    </section><!-- Workshop -->
+    <section id="sec-workshop" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h2 class="font-heading text-2xl mb-6" style="color:#eaeaea;">📚 Workshop: Belajar Step by Step</h2>
+      <div class="space-y-5"><!-- Video/Tutorial Recommendations -->
+       <div class="rounded-xl p-5" style="background:rgba(79,172,254,0.06); border:1px solid rgba(79,172,254,0.15);">
+        <h3 class="font-semibold mb-3" style="color:#4facfe;">🎥 Step 1: Pahami User dan Masalahnya</h3>
+        <p class="text-sm mb-3" style="color:#a8a8b3;"><strong>Tujuan:</strong> Bisa mengidentifikasi siapa pengguna dan apa masalah mereka</p>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#4facfe;">Aktivitas:</strong></p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Pilih 1 aplikasi yang sering kamu gunakan (TikTok, Instagram, Google Maps, dll)</li>
+          <li>Identifikasi: Siapa user utamanya? Apa masalah yang diselesaikan app itu?</li>
+          <li>Cari di internet atau tanya teman: Mengapa app itu dibuat?</li>
+          <li>Tulis ringkasannya di kertas/notes (5 kalimat cukup)</li>
+         </ol>
+         <p style="margin-top:1rem;"><strong style="color:#4facfe;">Contoh:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>User: Remaja yang suka berbagi konten</li>
+          <li>Masalah: Ingin punya platform tempat upload video pendek tanpa ribet</li>
+          <li>Solusi: TikTok memudahkan siapa aja buat konten dan dapat views langsung</li>
+         </ul>
+        </div>
+       </div><!-- Step 2 -->
+       <div class="rounded-xl p-5" style="background:rgba(67,233,123,0.06); border:1px solid rgba(67,233,123,0.15);">
+        <h3 class="font-semibold mb-3" style="color:#43e97b;">🎯 Step 2: Buat User Story Sederhana</h3>
+        <p class="text-sm mb-3" style="color:#a8a8b3;"><strong>Tujuan:</strong> Bisa menerjemahkan masalah jadi requirement yang jelas</p>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#43e97b;">Aktivitas:</strong></p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Pilih 1 fitur dari app yang sudah dianalisis di Step 1</li>
+          <li>Buat 3 user story dalam format: "Sebagai [role], saya ingin [aksi], sehingga [manfaat]"</li>
+          <li>Tanya diri sendiri: Apakah ini must-have, should-have, atau nice-to-have?</li>
+          <li>Diskusi dengan teman: Apakah user story-mu sudah jelas?</li>
+         </ol>
+         <p style="margin-top:1rem;"><strong style="color:#43e97b;">Contoh dari TikTok:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>MUST: Sebagai creator, saya ingin upload video dengan musik, sehingga konten saya lebih menarik</li>
+          <li>SHOULD: Sebagai creator, saya ingin lihat statistik views, sehingga tahu konten mana paling viral</li>
+          <li>NICE: Sebagai creator, saya ingin filter special effects, sehingga konten lebih keren</li>
+         </ul>
+        </div>
+       </div><!-- Step 3 -->
+       <div class="rounded-xl p-5" style="background:rgba(250,200,60,0.06); border:1px solid rgba(250,200,60,0.15);">
+        <h3 class="font-semibold mb-3" style="color:#fac83c;">📊 Step 3: Definisikan Success Metrics</h3>
+        <p class="text-sm mb-3" style="color:#a8a8b3;"><strong>Tujuan:</strong> Bisa mengukur apakah fitur berhasil atau tidak</p>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#fac83c;">Aktivitas:</strong></p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Dari user story di Step 2, tanya: Bagaimana kita tahu kalau fitur ini berhasil?</li>
+          <li>Tentukan 1 primary metric (KPI utama) yang bisa diukur dengan angka</li>
+          <li>Tulis target realistis (misal: "75% creator menggunakan fitur ini dalam 3 bulan")</li>
+          <li>Buat tabel: Metric | Target | Timeline</li>
+         </ol>
+         <p style="margin-top:1rem;"><strong style="color:#fac83c;">Contoh dari TikTok (fitur edit video):</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>Primary Metric: 80% creator menggunakan built-in editor</li>
+          <li>Secondary: Rata-rata waktu editing berkurang dari 5 menit jadi 2 menit</li>
+          <li>Timeline: Target dalam 60 hari setelah launch</li>
+         </ul>
+        </div>
+       </div><!-- Step 4 -->
+       <div class="rounded-xl p-5" style="background:rgba(167,119,227,0.06); border:1px solid rgba(167,119,227,0.15);">
+        <h3 class="font-semibold mb-3" style="color:#a777e3;">🛠️ Step 4: Mapakan Scope (In/Out)</h3>
+        <p class="text-sm mb-3" style="color:#a8a8b3;"><strong>Tujuan:</strong> Bisa membedakan apa yang dibangun sekarang vs nanti</p>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#a777e3;">Aktivitas:</strong></p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Buat 2 kolom: "IN-SCOPE" dan "OUT-OF-SCOPE"</li>
+          <li>Dari semua user story, pisahkan mana yang harus dibangun fase 1, mana untuk nanti</li>
+          <li>Jelaskan alasan untuk setiap yang out-of-scope (kompleks, butuh resource lebih, bisa nanti, dll)</li>
+          <li>Tanya mentor/guru: Apakah scope ini realistis dengan timeline yang ada?</li>
+         </ol>
+         <p style="margin-top:1rem;"><strong style="color:#a777e3;">Contoh:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>✅ IN: Upload video, tambah musik, basic filter</li>
+          <li>❌ OUT: AI-powered special effects (butuh training model), Green screen (fase 2)</li>
+         </ul>
+        </div>
+       </div><!-- Step 5 -->
+       <div class="rounded-xl p-5" style="background:rgba(233,69,96,0.06); border:1px solid rgba(233,69,96,0.15);">
+        <h3 class="font-semibold mb-3" style="color:#e94560;">🎬 Step 5: Bikin Simple Timeline</h3>
+        <p class="text-sm mb-3" style="color:#a8a8b3;"><strong>Tujuan:</strong> Bisa merencanakan pengerjaan dengan milestone yang jelas</p>
+        <div class="space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#e94560;">Aktivitas:</strong></p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Buat 5 phase: Planning → Design → Dev → Testing → Launch</li>
+          <li>Estimasi durasi setiap phase (realistis, jangan terlalu optimis)</li>
+          <li>Tentukan deliverable di setiap phase</li>
+          <li>Bikin bagan Gantt sederhana (bisa di Excel, Google Sheets, atau kertas)</li>
+         </ol>
+         <p style="margin-top:1rem;"><strong style="color:#e94560;">Contoh timeline 8 minggu:</strong></p>
+         <ul class="list-disc pl-5 space-y-1">
+          <li>Minggu 1-2: Planning, Research, Design mockup</li>
+          <li>Minggu 3-5: Development (backend + frontend)</li>
+          <li>Minggu 6: Testing, bug fix</li>
+          <li>Minggu 7: Beta/soft launch</li>
+          <li>Minggu 8: Full launch + monitoring</li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Latihan/Exercise -->
+    <section id="sec-exercise" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h2 class="font-heading text-2xl mb-6" style="color:#eaeaea;">💪 Latihan Praktis</h2>
+      <div class="space-y-6"><!-- Challenge 1 -->
+       <div class="rounded-xl p-5" style="background:rgba(79,172,254,0.08); border:2px solid rgba(79,172,254,0.3);">
+        <div class="flex items-start justify-between gap-3">
+         <div>
+          <h3 class="font-semibold mb-2" style="color:#4facfe;">Challenge 1: Problem Identification</h3>
+          <p class="text-sm mb-3" style="color:#a8a8b3;">Identifikasi masalah dari skenario yang diberikan</p>
+         </div><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:#4facfe; color:#0f0f23;">⭐ EASY</span>
+        </div>
+        <div class="mt-4 p-3 rounded-lg" style="background:rgba(0,0,0,0.2);">
+         <p style="color:#a8a8b3;"><strong>Skenario:</strong> Guru di sekolah keluhkan bahwa mereka susah track perkembangan siswa karena nilai tersebar di berbagai tempat (kertas, Excel, Google Classroom, WhatsApp). Akibatnya, saat orang tua tanya tentang nilai anak, gurunya kebingungan cari data.</p>
+        </div>
+        <div class="mt-4 space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#4facfe;">✍️ Tugas:</strong></p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Siapa yang punya masalah? (bisa lebih dari 1 persona)</li>
+          <li>Apa masalahnya secara spesifik? (bukan solusinya!)</li>
+          <li>Dampak masalah ini apa?</li>
+          <li>Tulis 3 user story dari masalah ini</li>
+         </ol>
+        </div>
+        <details class="mt-3"><summary class="cursor-pointer text-sm font-semibold" style="color:#4facfe;">Lihat Jawaban Contoh →</summary>
+         <div class="mt-3 p-3 rounded-lg" style="background:rgba(0,0,0,0.2);">
+          <p style="color:#a8a8b3;"><strong>Personas:</strong> Guru, Orang Tua, Admin sekolah</p>
+          <p style="color:#a8a8b3; margin-top:0.5rem;"><strong>Masalah (BUKAN solusi):</strong> Data nilai tersebar di berbagai platform, sulit dikumpulkan, rentan kehilangan data, time-consuming untuk cari nilai satu siswa</p>
+          <p style="color:#a8a8b3; margin-top:0.5rem;"><strong>Dampak:</strong> Guru butuh waktu lama, orang tua nunggu lama, ada data yang hilang</p>
+          <p style="color:#a8a8b3; margin-top:0.5rem;"><strong>User Stories:</strong></p>
+          <ul class="list-disc pl-5 space-y-1" style="color:#a8a8b3;">
+           <li>Sebagai guru, saya ingin lihat semua nilai siswa dalam 1 tempat, sehingga tidak perlu bolak-balik aplikasi</li>
+           <li>Sebagai orang tua, saya ingin bisa lihat perkembangan nilai anak real-time, sehingga tau anak perlu bantuan</li>
+           <li>Sebagai guru, saya ingin input nilai sekali dan otomatis tersimpan, sehingga tidak perlu input ulang</li>
+          </ul>
+         </div>
+        </details>
+       </div><!-- Challenge 2 -->
+       <div class="rounded-xl p-5" style="background:rgba(67,233,123,0.08); border:2px solid rgba(67,233,123,0.3);">
+        <div class="flex items-start justify-between gap-3">
+         <div>
+          <h3 class="font-semibold mb-2" style="color:#43e97b;">Challenge 2: SMART Goals</h3>
+          <p class="text-sm mb-3" style="color:#a8a8b3;">Convert vague goals jadi SMART metrics</p>
+         </div><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:#43e97b; color:#0f0f23;">⭐⭐ MEDIUM</span>
+        </div>
+        <div class="mt-4 p-3 rounded-lg" style="background:rgba(0,0,0,0.2);">
+         <p style="color:#a8a8b3;"><strong>Goal Vague:</strong> "Kami ingin meningkatkan engagement pengguna"</p>
+         <p style="color:#a8a8b3; margin-top:0.5rem;">❌ Tidak terukur, tidak jelas target berapa</p>
+        </div>
+        <div class="mt-4 space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#43e97b;">✍️ Tugas:</strong> Convert jadi goal yang SMART (Specific, Measurable, Achievable, Relevant, Time-bound)</p>
+         <p style="margin-top:1rem; padding:0.75rem; border-radius:0.5rem; background:rgba(0,0,0,0.2);"><strong>Hint:</strong> Pikirkan: Engagement metric apa? Angka target berapa? Timeline kapan? Realistic atau tidak?</p>
+        </div>
+        <details class="mt-3"><summary class="cursor-pointer text-sm font-semibold" style="color:#43e97b;">Lihat Jawaban Contoh →</summary>
+         <div class="mt-3 p-3 rounded-lg" style="background:rgba(0,0,0,0.2);">
+          <p style="color:#a8a8b3;"><strong>Goal SMART:</strong></p>
+          <ul class="list-disc pl-5 space-y-1" style="color:#a8a8b3;">
+           <li><strong>Specific:</strong> Tingkatkan daily active users (DAU)</li>
+           <li><strong>Measurable:</strong> Dari 5,000 DAU jadi 8,000 DAU</li>
+           <li><strong>Achievable:</strong> Realistis dengan timeline 3 bulan</li>
+           <li><strong>Relevant:</strong> Sesuai dengan bisnis objective</li>
+           <li><strong>Time-bound:</strong> Target 3 bulan setelah launch fitur baru</li>
+          </ul>
+          <p style="color:#43e97b; margin-top:1rem; font-weight:600;">✅ Final Goal: "Increase daily active users dari 5K menjadi 8K dalam 3 bulan setelah launch fitur social sharing"</p>
+         </div>
+        </details>
+       </div><!-- Challenge 3 -->
+       <div class="rounded-xl p-5" style="background:rgba(250,200,60,0.08); border:2px solid rgba(250,200,60,0.3);">
+        <div class="flex items-start justify-between gap-3">
+         <div>
+          <h3 class="font-semibold mb-2" style="color:#fac83c;">Challenge 3: Scope Management</h3>
+          <p class="text-sm mb-3" style="color:#a8a8b3;">Tentukan mana in-scope, out-of-scope, dan alasan</p>
+         </div><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:#fac83c; color:#0f0f23;">⭐⭐ MEDIUM</span>
+        </div>
+        <div class="mt-4 p-3 rounded-lg" style="background:rgba(0,0,0,0.2);">
+         <p style="color:#a8a8b3;"><strong>Project:</strong> Membuat E-Learning Platform untuk siswa SMK (Timeline: 10 minggu)</p>
+         <p style="color:#a8a8b3; margin-top:0.5rem;"><strong>Feature Ideas yang diminta stakeholder:</strong></p>
+         <ul class="list-disc pl-5 space-y-1" style="color:#a8a8b3;">
+          <li>A) Video player untuk course content</li>
+          <li>B) Quiz interaktif dengan AI scoring otomatis</li>
+          <li>C) Live video class dengan 200+ students</li>
+          <li>D) Discussion forum dengan moderation system</li>
+          <li>E) Sertifikat digital yang blockchain-verified</li>
+          <li>F) Payment gateway untuk beli course</li>
+          <li>G) Leaderboard dengan ranking siswa</li>
+         </ul>
+        </div>
+        <div class="mt-4 space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#fac83c;">✍️ Tugas:</strong> Untuk 10 minggu timeline itu:</p>
+         <ol class="list-decimal pl-5 space-y-1">
+          <li>Mana yang MUST HAVE (P0)? Kenapa?</li>
+          <li>Mana yang SHOULD HAVE (P1)? Kenapa?</li>
+          <li>Mana yang di-cut atau ditunda? Alasan apa?</li>
+          <li>Bikin tabel: Feature | Priority | Alasan | Phase</li>
+         </ol>
+        </div>
+        <details class="mt-3"><summary class="cursor-pointer text-sm font-semibold" style="color:#fac83c;">Lihat Jawaban Contoh →</summary>
+         <div class="mt-3 p-3 rounded-lg text-sm" style="background:rgba(0,0,0,0.2); color:#a8a8b3; overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse;">
+           <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <th style="text-align:left; padding:0.5rem; color:#fac83c;">Feature</th>
+             <th style="text-align:left; padding:0.5rem; color:#fac83c;">Priority</th>
+             <th style="text-align:left; padding:0.5rem; color:#fac83c;">Alasan</th>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">A) Video player</td>
+             <td style="padding:0.5rem; color:#43e97b;">P0 - MUST</td>
+             <td style="padding:0.5rem;">Core feature, simple, essential untuk pembelajaran</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">D) Discussion forum</td>
+             <td style="padding:0.5rem; color:#43e97b;">P0 - MUST</td>
+             <td style="padding:0.5rem;">Penting untuk interaksi siswa-guru, bisa buat simple</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">B) AI Scoring Quiz</td>
+             <td style="padding:0.5rem; color:#fac83c;">P1 - SHOULD</td>
+             <td style="padding:0.5rem;">Penting tapi bisa mulai simple (hanya multiple choice), AI bisa nanti</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">G) Leaderboard</td>
+             <td style="padding:0.5rem; color:#fac83c;">P1 - SHOULD</td>
+             <td style="padding:0.5rem;">Gamification bisa meningkatkan motivation, moderate difficulty</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">C) Live video class</td>
+             <td style="padding:0.5rem; color:#e94560;">OUT - P2</td>
+             <td style="padding:0.5rem;">Infrastructure kompleks, 200+ users butuh server powerful, defer ke fase 2</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">E) Blockchain cert</td>
+             <td style="padding:0.5rem; color:#e94560;">OUT - P2</td>
+             <td style="padding:0.5rem;">Nice to have, bisa start dengan cert PDF dulu, blockchain nanti</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+             <td style="padding:0.5rem;">F) Payment gateway</td>
+             <td style="padding:0.5rem; color:#e94560;">OUT - P2</td>
+             <td style="padding:0.5rem;">Kompleks (payment, tax, compliance), bisa gratis dulu, monetize fase 2</td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </details>
+       </div><!-- Challenge 4 -->
+       <div class="rounded-xl p-5" style="background:rgba(167,119,227,0.08); border:2px solid rgba(167,119,227,0.3);">
+        <div class="flex items-start justify-between gap-3">
+         <div>
+          <h3 class="font-semibold mb-2" style="color:#a777e3;">Challenge 4: Full Mini PRD</h3>
+          <p class="text-sm mb-3" style="color:#a8a8b3;">Bikin PRD lengkap untuk project kecil</p>
+         </div><span class="px-3 py-1 rounded-full text-xs font-bold" style="background:#a777e3; color:#fff;">⭐⭐⭐ HARD</span>
+        </div>
+        <div class="mt-4 p-3 rounded-lg" style="background:rgba(0,0,0,0.2);">
+         <p style="color:#a8a8b3;"><strong>Project Brief:</strong></p>
+         <p style="color:#a8a8b3; margin-top:0.5rem;">Sekolahmu butuh app "Pengingat Jadwal Pelajaran" untuk siswa. Setiap pagi, app kirim notifikasi ke siswa jam berapa mulai pelajaran apa, di ruang mana, dan guru siapa. Saat ini siswa sering lupa, ketuker jadwal, atau telat ke kelas.</p>
+        </div>
+        <div class="mt-4 space-y-2 text-sm" style="color:#a8a8b3;">
+         <p><strong style="color:#a777e3;">✍️ Tugas (buat di kertas/Google Doc):</strong></p>
+         <ol class="list-decimal pl-5 space-y-2">
+          <li><strong>Executive Summary</strong> (3-4 kalimat) - Apa app ini dan kenapa dibangun?</li>
+          <li><strong>Problem Statement</strong> - Jelaskan masalah siswa dengan data konkret</li>
+          <li><strong>Target Users</strong> - Siapa yang pakai? (siswa, guru, admin?)</li>
+          <li><strong>User Stories (min 5)</strong> - Format: "Sebagai..., saya ingin..., sehingga..."</li>
+          <li><strong>Must/Should/Nice breakdown</strong> - Mana prioritas?</li>
+          <li><strong>Success Metrics (min 3)</strong> - Bagaimana kita ukur berhasil?</li>
+          <li><strong>Timeline (5 phase)</strong> - Estimasi durasi setiap phase</li>
+          <li><strong>1 Risk + mitigation</strong> - Apa yang bisa salah dan solusinya?</li>
+         </ol>
+        </div>
+        <div style="margin-top:1rem; padding:0.75rem; border-radius:0.5rem; background:rgba(0,0,0,0.2);">
+         <p style="color:#a777e3;"><strong>💡 Tips:</strong> Diskusi dengan 2-3 teman, buat bareng. Lebih mudah brainstorm kalau banyak ide!</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="sec-checklist" class="hidden fade-in space-y-6">
+     <div class="section-card rounded-2xl p-6 md:p-8" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+      <h2 class="font-heading text-2xl mb-2" style="color:#eaeaea;">PRD Review Checklist</h2>
+      <p class="text-sm mb-6" style="color:#a8a8b3;">Centang setiap item sebelum submit PRD untuk review</p>
+      <div class="space-y-3" id="checklist"><label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Problem statement jelas dan didukung data</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Target user/persona terdefinisi</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Success metrics terukur (SMART goals)</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">User stories lengkap dengan prioritas (P0/P1/P2)</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Scope dan out-of-scope terdefinisi jelas</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Edge cases dan error states dipertimbangkan</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Technical constraints dan dependencies tercatat</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Timeline realistis dengan milestones</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Risks teridentifikasi dengan mitigation plan</span> </label> <label class="checklist-item flex items-start gap-3 p-3 rounded-lg cursor-pointer" style="background:rgba(255,255,255,0.02);"> <input type="checkbox" class="mt-1 w-4 h-4 rounded accent-[#e94560]"> <span style="color:#a8a8b3;">Dokumen sudah di-review oleh minimal 1 orang lain</span> </label>
+      </div>
+      <div class="mt-6 p-4 rounded-xl text-center" style="background:rgba(67,233,123,0.08); border:1px solid rgba(67,233,123,0.2);">
+       <p class="text-sm font-medium" id="checklist-progress" style="color:#43e97b;">0/10 items completed</p>
+      </div>
+     </div>
+    </section>
+   </main>
+  </div>
+  <script>
+    // Tab navigation
+    function showSection(name) {
+      document.querySelectorAll('[id^="sec-"]').forEach(s => s.classList.add('hidden'));
+      document.getElementById('sec-' + name).classList.remove('hidden');
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.style.color = '#a8a8b3';
+      });
+      event.currentTarget.classList.add('tab-active');
+      event.currentTarget.style.color = '#eaeaea';
+    }
+
+    // Accordion toggle
+    function toggleDetail(el) {
+      const detail = el.querySelector('.detail');
+      detail.classList.toggle('hidden');
+    }
+
+    // Copy template
+    function copyTemplate() {
+      const text = document.getElementById('template-content').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2000);
+      });
+    }
+
+    // Checklist progress
+    document.getElementById('checklist').addEventListener('change', () => {
+      const checked = document.querySelectorAll('#checklist input:checked').length;
+      document.getElementById('checklist-progress').textContent = `${checked}/10 items completed`;
+    });
+
+    // Element SDK
+    const defaultConfig = {
+      main_title: 'PRD Mastery Guide',
+      subtitle: 'Panduan lengkap menulis Product Requirements Document yang efektif untuk pengembangan aplikasi',
+      background_color: '#0f0f23',
+      surface_color: 'rgba(255,255,255,0.04)',
+      text_color: '#a8a8b3',
+      primary_action: '#e94560',
+      heading_color: '#eaeaea',
+      font_family: 'Playfair Display',
+      font_size: 16
+    };
+
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => {
+        const c = { ...defaultConfig, ...config };
+        document.getElementById('main-title').textContent = c.main_title;
+        document.getElementById('subtitle').textContent = c.subtitle;
+        document.getElementById('app').style.background = `linear-gradient(135deg, ${c.background_color} 0%, #1a1a2e 50%, #16213e 100%)`;
+        document.getElementById('main-title').style.color = c.heading_color;
+        document.getElementById('main-title').style.fontFamily = `${c.font_family}, serif`;
+        document.getElementById('main-title').style.fontSize = `${c.font_size * 3}px`;
+        document.getElementById('subtitle').style.color = c.text_color;
+        document.getElementById('subtitle').style.fontSize = `${c.font_size}px`;
+      },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.primary_action || defaultConfig.primary_action, set: (v) => { config.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); } },
+          { get: () => config.heading_color || defaultConfig.heading_color, set: (v) => { config.heading_color = v; window.elementSdk.setConfig({ heading_color: v }); } }
+        ],
+        borderables: [],
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['subtitle', config.subtitle || defaultConfig.subtitle]
+      ])
+    });
+
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f42e23701d8ce0e',t:'MTc3NzUxMzcwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
